@@ -1,3 +1,4 @@
+import 'package:efymen/screens/quickNote.dart';
 import 'package:efymen/widgets/AppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,19 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
+      body: Center(
+        child: TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const QuickNote(),
+              ),
+            );
+          },
+          child: const Text('text'),
+        ),
+      ),
     );
   }
 }
@@ -23,7 +37,7 @@ AppBar buildAppBar() {
       width: double.infinity,
       child: Row(
         children: [
-          Icons.asset("../assets/icons/logo.png"),
+          Image.asset("/logo.png"),
           Text('EFYMEN'),
         ],
       ),
