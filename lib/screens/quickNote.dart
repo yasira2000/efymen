@@ -1,3 +1,4 @@
+import 'package:efymen/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 
 class QuickNote extends StatelessWidget {
@@ -5,10 +6,24 @@ class QuickNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "QuickNote",
-      home: Scaffold(
-        backgroundColor: Colors.amber,
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: const CommonAppBar(),
+          backgroundColor: colorScheme.background,
+          body: TabBar(
+            labelColor: colorScheme.primary,
+            labelStyle: TextStyle(color: colorScheme.primary),
+            tabs: const [
+              Tab(text: "Quick Note"),
+              Tab(text: "Scheduled"),
+            ],
+          ),
+        ),
       ),
     );
   }
