@@ -1,21 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String textTitle;
-  const CommonAppBar({super.key, this.textTitle = 'EFYMEN'});
+  final Color color;
+  const CommonAppBar(
+      {super.key,
+      this.textTitle = 'EFYMEN',
+      this.color = const Color(0xFFFFC400)});
 
   @override
   Widget build(BuildContext context) {
-    String title = textTitle;
     return AppBar(
-      title: Text(title),
+      title: Text(textTitle,
+          style: GoogleFonts.roboto(
+            color: Colors.black,
+            fontSize: 26,
+            fontWeight: FontWeight.w400,
+          )),
+      backgroundColor: color,
       leading: IconButton(
         icon: Image.asset('assets/icons/logo.png'),
         onPressed: () {},
       ),
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.notifications)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.notifications),
+          color: Colors.black,
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.settings),
+          color: Colors.black,
+        ),
       ],
     );
   }

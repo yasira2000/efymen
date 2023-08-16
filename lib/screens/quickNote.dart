@@ -2,14 +2,21 @@ import 'package:efymen/models/QNote.dart';
 import 'package:efymen/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 
-class QuickNote extends StatelessWidget {
-  const QuickNote(String s, {super.key});
+class QuickNote extends StatefulWidget {
+  const QuickNote({super.key});
 
   @override
+  State<QuickNote> createState() => _QuickNoteState();
+}
+
+class _QuickNoteState extends State<QuickNote> with TickerProviderStateMixin {
+  @override
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 2, vsync: this);
     List<QNote> notes = [
-      QNote("have to get a red pen", 'red'),
+      QNote("have to get a red pen ", 'red'),
       QNote("download Spiderman movie", 'blue'),
+      QNote("Mission imposible 5 movie download", 'green'),
     ];
     // List<QNote> sheduled = [
     //   QNote("have to get a red pen", 'red'),
@@ -19,30 +26,100 @@ class QuickNote extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "QuickNote",
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: const CommonAppBar(
-            textTitle: "Todo",
+      home: Scaffold(
+        backgroundColor: colorScheme.background,
+        appBar: const CommonAppBar(
+          textTitle: "Todo",
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: TabBar(
+                    controller: _tabController,
+                    labelPadding: const EdgeInsets.only(left: 20, right: 20),
+                    labelColor: colorScheme.primary,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicator: CircleTabIndecator(
+                        color: Colors.grey.shade400, radius: 4),
+                    unselectedLabelColor: colorScheme.onBackground,
+                    isScrollable: true,
+                    tabs: const [
+                      Tab(text: "Quick Note"),
+                      Tab(text: "Scheduled"),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                height: 1000,
+                width: double.maxFinite,
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    ListView.builder(
+                        itemCount: notes.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.circle_outlined),
+                                color: Colors.red,
+                                iconSize: 25,
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(top: 5),
+                                height:
+                                    MediaQuery.of(context).size.height * 0.03,
+                                child: Text(notes[index].description),
+                              ),
+                            ],
+                          );
+                        }),
+                    Text("dew"),
+                  ],
+                ),
+              )
+            ],
           ),
-          backgroundColor: colorScheme.background,
         ),
       ),
     );
   }
 }
 
-Widget quickTabView(context, List<QNote> qlist) {
-  List<QNote> qList = qlist;
-  return GridView.count(
-    crossAxisCount: 2,
-    children: List.generate(100, (index) {
-      return Center(
-        child: Text(
-          'Item $index',
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
-      );
-    }),
-  );
+class CircleTabIndecator extends Decoration {
+  final Color color;
+  double radius;
+  CircleTabIndecator({required this.color, required this.radius});
+
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+    return _CirclePainter(color: color, radius: radius);
+  }
+}
+
+class _CirclePainter extends BoxPainter {
+  final Color color;
+  double radius;
+  _CirclePainter({required this.color, required this.radius});
+
+  @override
+  void paint(
+    Canvas canvas,
+    Offset offset,
+    ImageConfiguration configuration,
+  ) {
+    Paint paint = Paint();
+    paint.color = color;
+    paint.isAntiAlias = true;
+    final Offset circleOffset = Offset(
+        configuration.size!.width / 2 - radius / 2,
+        configuration.size!.height - radius);
+    canvas.drawCircle(offset + circleOffset, radius, paint);
+  }
 }
