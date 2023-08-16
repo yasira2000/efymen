@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import './screens/homepage.dart';
 
 void main() {
@@ -21,15 +20,9 @@ class MyApp extends StatelessWidget {
           background: Colors.white,
           error: Colors.red,
           onPrimary: Colors.black,
+          onBackground: Color.fromARGB(255, 107, 107, 107),
           secondary: Color(0xFFFFEBAA),
         ),
-        textTheme: TextTheme(
-          titleMedium: GoogleFonts.roboto(
-            fontSize: 26,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        appBarTheme: const AppBarTheme(backgroundColor: Color(0xFFFFC400)),
       ),
     );
   }
