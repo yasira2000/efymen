@@ -8,7 +8,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CommonAppBar(),
+      appBar: const CommonAppBar(
+        textTitle: "EFYMEN",
+      ),
       body: Column(
         children: [
           Center(
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const QuickNote(),
+                    builder: (context) => const QuickNote('s'),
                   ),
                 );
               },
