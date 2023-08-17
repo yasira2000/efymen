@@ -15,7 +15,14 @@ class _QuickNoteState extends State<QuickNote> with TickerProviderStateMixin {
     TabController _tabController = TabController(length: 2, vsync: this);
     List<QNote> notes = [
       QNote("have to get a red pen ", 'red'),
-      QNote("download Spiderman movie", 'blue'),
+      QNote(
+          "download Spiderman movie Mission imposible 5 movie download download Spiderman movie Mission imposible 5 movie download download Spiderman movie Mission imposible 5 movie download download Spiderman movie Mission imposible 5 movie download",
+          'blue'),
+      QNote("download Spiderman movie Mission imposible 5 movie download ",
+          'blue'),
+      QNote("Mission imposible 5 movie download", 'green'),
+      QNote("Mission imposible 5 movie download", 'green'),
+      QNote("Mission imposible 5 movie download", 'green'),
       QNote("Mission imposible 5 movie download", 'green'),
     ];
     // List<QNote> sheduled = [
@@ -31,61 +38,182 @@ class _QuickNoteState extends State<QuickNote> with TickerProviderStateMixin {
         appBar: const CommonAppBar(
           textTitle: "Todo",
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: TabBar(
-                    controller: _tabController,
-                    labelPadding: const EdgeInsets.only(left: 20, right: 20),
-                    labelColor: colorScheme.primary,
-                    indicatorSize: TabBarIndicatorSize.label,
-                    indicator: CircleTabIndecator(
-                        color: Colors.grey.shade400, radius: 4),
-                    unselectedLabelColor: colorScheme.onBackground,
-                    isScrollable: true,
-                    tabs: const [
-                      Tab(text: "Quick Note"),
-                      Tab(text: "Scheduled"),
-                    ],
-                  ),
+        body: Column(
+          children: [
+            Container(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: TabBar(
+                  controller: _tabController,
+                  labelPadding: const EdgeInsets.only(left: 20, right: 20),
+                  labelColor: colorScheme.primary,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  indicator: CircleTabIndecator(
+                      color: Colors.grey.shade400, radius: 4),
+                  unselectedLabelColor: colorScheme.onBackground,
+                  isScrollable: true,
+                  tabs: const [
+                    Tab(text: "Quick Note"),
+                    Tab(text: "Scheduled"),
+                  ],
                 ),
               ),
-              Container(
-                height: 1000,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
                 width: double.maxFinite,
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-                    ListView.builder(
-                        itemCount: notes.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.circle_outlined),
-                                color: Colors.red,
-                                iconSize: 25,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(top: 5),
-                                height:
-                                    MediaQuery.of(context).size.height * 0.03,
-                                child: Text(notes[index].description),
-                              ),
-                            ],
-                          );
-                        }),
-                    Text("dew"),
+                    Column(
+                      children: [
+                        Flexible(
+                          child: ListView.builder(
+                              itemCount: notes.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.circle_outlined),
+                                      color: Colors.red,
+                                      iconSize: 25,
+                                    ),
+                                    Flexible(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 40, top: 15),
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Text(
+                                            notes[index].description,
+                                            overflow: TextOverflow.clip,
+                                            maxLines: 5,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
+                        ),
+                        Container(
+                          height: 2,
+                          width: double.infinity,
+                          color: Colors.grey,
+                        ),
+                        Flexible(
+                          child: ListView.builder(
+                              itemCount: notes.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.circle_outlined),
+                                      color: Colors.red,
+                                      iconSize: 25,
+                                    ),
+                                    Flexible(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 40, top: 15),
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Text(
+                                            notes[index].description,
+                                            overflow: TextOverflow.clip,
+                                            maxLines: 5,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Flexible(
+                          child: ListView.builder(
+                              itemCount: notes.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.circle_outlined),
+                                      color: Colors.red,
+                                      iconSize: 25,
+                                    ),
+                                    Flexible(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 40, top: 15),
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Text(
+                                            notes[index].description,
+                                            overflow: TextOverflow.clip,
+                                            maxLines: 5,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
+                        ),
+                        Container(
+                          height: 2,
+                          width: double.infinity,
+                          color: Colors.grey,
+                        ),
+                        Flexible(
+                          child: ListView.builder(
+                              itemCount: notes.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.circle_outlined),
+                                      color: Colors.red,
+                                      iconSize: 25,
+                                    ),
+                                    Flexible(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 40, top: 15),
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Text(
+                                            notes[index].description,
+                                            overflow: TextOverflow.clip,
+                                            maxLines: 5,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
