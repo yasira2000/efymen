@@ -1,4 +1,4 @@
-import 'package:efymen/screens/quickNote.dart';
+import 'package:efymen/screens/todo.dart';
 import 'package:efymen/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const QuickNote(),
+                    builder: (context) => const Todo(),
                   ),
                 );
               },
