@@ -14,7 +14,7 @@ class Todo extends StatefulWidget {
 
 class _TodoState extends State<Todo> with TickerProviderStateMixin {
   late TabController _tabController;
-  bool divide = true;
+
   List<QNote> notes = [
     QNote("have to get a red pen ", '0xffff0000'),
     QNote(
@@ -203,111 +203,6 @@ class _TodoState extends State<Todo> with TickerProviderStateMixin {
                 ListView.builder(
                   itemCount: schedule.length,
                   itemBuilder: (context, index) {
-                    if (schedule[index].date.isAfter(DateTime.now()) & divide) {
-                      divide = false;
-                      return Column(
-                        children: [
-                          const Divider(
-                            indent: 30,
-                            endIndent: 30,
-                            color: Color(0xFFDDDDDD),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 40, right: 30, top: 10, bottom: 10),
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    children: [
-                                      Container(
-                                        height: 50,
-                                        width: 50,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: schedule[index]
-                                                    .date
-                                                    .isBefore(DateTime.now())
-                                                ? const Color(0xFFFFF2C8)
-                                                : Colors.white,
-                                            border: Border.all(
-                                              color: colorScheme.primary,
-                                              width: 3,
-                                            )),
-                                        child: Center(
-                                            child: Text(
-                                                schedule[index]
-                                                    .date
-                                                    .day
-                                                    .toString(),
-                                                style: TextStyle(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: colorScheme.primary,
-                                                ))),
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        DateFormat.MMM()
-                                            .format(schedule[index].date),
-                                        style: TextStyle(
-                                            color: colorScheme.primary,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 40,
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: const Color(0xFFFFE17F),
-                                      ),
-                                      width: 214,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(12),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              schedule[index].date.hour >= 12
-                                                  ? "${schedule[index].date.hour}.${schedule[index].date.minute} P.M"
-                                                  : "${schedule[index].date.hour}.${schedule[index].date.minute} A.M",
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
-                                            Text(
-                                              schedule[index].description,
-                                              overflow: TextOverflow.visible,
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    }
                     return Padding(
                       padding: const EdgeInsets.only(
                           left: 40, right: 30, top: 10, bottom: 10),
@@ -371,7 +266,7 @@ class _TodoState extends State<Todo> with TickerProviderStateMixin {
                                     children: [
                                       Text(
                                         schedule[index].date.hour >= 12
-                                            ? "${schedule[index].date.hour}.${schedule[index].date.minute} P.M"
+                                            ? "${schedule[index].date.hour - 12}.${schedule[index].date.minute} P.M"
                                             : "${schedule[index].date.hour}.${schedule[index].date.minute} A.M",
                                         style: const TextStyle(
                                           fontWeight: FontWeight.w600,

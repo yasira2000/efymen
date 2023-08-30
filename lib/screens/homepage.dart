@@ -1,3 +1,4 @@
+import 'package:efymen/screens/dailyRouting.dart';
 import 'package:efymen/screens/todo.dart';
 import 'package:efymen/widgets/appbar.dart';
 import 'package:flutter/material.dart';
@@ -13,18 +14,27 @@ class HomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Center(
-            child: TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Todo(),
-                  ),
-                );
-              },
-              child: const Text('text'),
-            ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Todo(),
+                ),
+              );
+            },
+            child: const Text('text 1'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DailyRouting(),
+                ),
+              );
+            },
+            child: const Text('text 2'),
           ),
         ],
       ),
