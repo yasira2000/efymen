@@ -14,7 +14,7 @@ class Todo extends StatefulWidget {
 
 class _TodoState extends State<Todo> with TickerProviderStateMixin {
   late TabController _tabController;
-  bool divide = true;
+
   List<QNote> notes = [
     QNote("have to get a red pen ", '0xffff0000'),
     QNote(
@@ -203,14 +203,6 @@ class _TodoState extends State<Todo> with TickerProviderStateMixin {
                 ListView.builder(
                   itemCount: schedule.length,
                   itemBuilder: (context, index) {
-                    if (schedule[index].date.isAfter(DateTime.now()) & divide) {
-                      divide = false;
-                      return const Divider(
-                        indent: 30,
-                        endIndent: 30,
-                        color: Color(0xFFDDDDDD),
-                      );
-                    }
                     return Padding(
                       padding: const EdgeInsets.only(
                           left: 40, right: 30, top: 10, bottom: 10),
@@ -274,7 +266,7 @@ class _TodoState extends State<Todo> with TickerProviderStateMixin {
                                     children: [
                                       Text(
                                         schedule[index].date.hour >= 12
-                                            ? "${schedule[index].date.hour}.${schedule[index].date.minute} P.M"
+                                            ? "${schedule[index].date.hour - 12}.${schedule[index].date.minute} P.M"
                                             : "${schedule[index].date.hour}.${schedule[index].date.minute} A.M",
                                         style: const TextStyle(
                                           fontWeight: FontWeight.w600,
