@@ -31,6 +31,12 @@ class _DailyRoutingState extends State<DailyRouting>
         'home',
         true),
     TimeTable(
+        "doing numerical practice questions doing numerical questions doing aaaa numerical practice questions",
+        DateTime(2023, 7, 13, 7, 30),
+        DateTime(2023, 7, 13, 09, 30),
+        'home',
+        true),
+    TimeTable(
         "doing numerical practice questions doing numerical practice questions numerical practice questions",
         DateTime(2023, 7, 13, 11, 30),
         DateTime(2023, 7, 13, 13, 30),
@@ -43,15 +49,9 @@ class _DailyRoutingState extends State<DailyRouting>
         'bodima',
         false),
     TimeTable(
-        "doing numerical practice questions doing numerical questions doing aaaa numerical practice questions",
-        DateTime(2023, 7, 13, 7, 30),
-        DateTime(2023, 7, 13, 09, 30),
-        'home',
-        true),
-    TimeTable(
         "doing numerical practice questions",
-        DateTime(2023, 7, 13, 18, 30),
-        DateTime(2023, 7, 13, 18, 50),
+        DateTime(2023, 7, 13, 19, 30),
+        DateTime(2023, 7, 13, 22, 50),
         'bodima',
         false),
   ];
@@ -96,7 +96,7 @@ class _DailyRoutingState extends State<DailyRouting>
                       width: 20,
                     ),
                     SizedBox(
-                      width: 220,
+                      width: containerWidth / 2.2,
                       child: Text(
                         DateFormat.EEEE().format(datetime).toUpperCase(),
                         style: const TextStyle(
@@ -165,64 +165,65 @@ class _DailyRoutingState extends State<DailyRouting>
                     Text(
                       DateFormat.MMMM().format(datetime),
                       style: const TextStyle(
-                          fontSize: 12,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600,
                           color: Color(0xFFFFF0C0)),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 70,
-                  width: double.infinity,
-                  child: ListView.builder(
-                    itemCount: week.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            current = index;
-                          });
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.2),
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 300),
-                            width: containerWidth / 9.7,
-                            height: 80,
-                            decoration: BoxDecoration(
-                                color: current == index
-                                    ? Color(0xFFFFEAA3)
-                                    : Colors.white,
-                                boxShadow: current == index
-                                    ? const [
-                                        BoxShadow(
-                                            color: Colors.black26,
-                                            blurRadius: 2.0,
-                                            spreadRadius: 0.5,
-                                            offset: Offset(0, 1))
-                                      ]
-                                    : const [
-                                        BoxShadow(
-                                            color: Colors.black12,
-                                            blurRadius: 2.0,
-                                            spreadRadius: 0.5,
-                                            offset: Offset(0, 1))
-                                      ],
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Center(
-                              child: Text(
-                                week[index],
-                                style: GoogleFonts.roboto(
-                                    fontWeight: FontWeight.w400),
+                    height: 70,
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: Row(
+                        children: [
+                          for (int index = 0; index < week.length; index++)
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  current = index;
+                                });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.2),
+                                child: AnimatedContainer(
+                                  duration: const Duration(milliseconds: 300),
+                                  width: containerWidth / 10.8,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                      color: current == index
+                                          ? Color(0xFFFFEAA3)
+                                          : Colors.white,
+                                      boxShadow: current == index
+                                          ? const [
+                                              BoxShadow(
+                                                  color: Colors.black26,
+                                                  blurRadius: 2.0,
+                                                  spreadRadius: 0.5,
+                                                  offset: Offset(0, 1))
+                                            ]
+                                          : const [
+                                              BoxShadow(
+                                                  color: Colors.black12,
+                                                  blurRadius: 2.0,
+                                                  spreadRadius: 0.5,
+                                                  offset: Offset(0, 1))
+                                            ],
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Center(
+                                    child: Text(
+                                      week[index],
+                                      style: GoogleFonts.roboto(
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                            )
+                        ],
+                      ),
+                    )),
               ],
             ),
           ),
@@ -240,11 +241,41 @@ class _DailyRoutingState extends State<DailyRouting>
                         decoration: BoxDecoration(
                           color: Color(0xFFFFF9E6),
                           borderRadius: BorderRadius.circular(8),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 2.0,
+                                spreadRadius: -1,
+                                offset: Offset(0, 1))
+                          ],
                         ),
                         width: MediaQuery.of(context).size.width / 12,
                         height: MediaQuery.of(context).size.height - 260,
                       ),
-                    )
+                    ),
+                    for (int i = 0; i < timetable.length; i++)
+                      Positioned(
+                        left: 30,
+                        top: (MediaQuery.of(context).size.height - 260) /
+                                24 *
+                                (timetable[i].startingTime.hour +
+                                    timetable[i].startingTime.minute / 60) +
+                            30,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFFC100),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          width: MediaQuery.of(context).size.width / 12,
+                          height: (MediaQuery.of(context).size.height - 260) /
+                              24 *
+                              timetable[i]
+                                  .endingTime
+                                  .difference(timetable[i].startingTime)
+                                  .inMinutes /
+                              60,
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -263,7 +294,7 @@ class _DailyRoutingState extends State<DailyRouting>
                           alignment: AlignmentDirectional.center,
                           children: [
                             Container(
-                              width: 250,
+                              width: containerWidth / 1.55,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: const Color(0xFFFFEBAA),
@@ -293,9 +324,6 @@ class _DailyRoutingState extends State<DailyRouting>
                                         const Text(' - '),
                                         TimeWidget(
                                             time: timetable[index].endingTime),
-                                        const SizedBox(
-                                          width: 90,
-                                        ),
                                       ],
                                     ),
                                   ),
@@ -338,7 +366,7 @@ class _DailyRoutingState extends State<DailyRouting>
                               ),
                             ),
                             Positioned(
-                              left: 30,
+                              left: containerWidth / 18,
                               child: Container(
                                 height: 30,
                                 width: 30,
@@ -356,7 +384,7 @@ class _DailyRoutingState extends State<DailyRouting>
                               ),
                             ),
                             Positioned(
-                              left: 35,
+                              left: containerWidth / 18 + 5,
                               child: Container(
                                 height: 20,
                                 width: 20,
@@ -374,9 +402,9 @@ class _DailyRoutingState extends State<DailyRouting>
                               ),
                             ),
                             timetable[index].status
-                                ? const Positioned(
-                                    left: 35,
-                                    child: SizedBox(
+                                ? Positioned(
+                                    left: containerWidth / 18 + 5,
+                                    child: const SizedBox(
                                       height: 20,
                                       width: 20,
                                       child: Icon(
@@ -388,7 +416,7 @@ class _DailyRoutingState extends State<DailyRouting>
                                   )
                                 : Container(),
                             Positioned(
-                              right: 53,
+                              right: containerWidth / 9,
                               top: 7,
                               child: InkWell(
                                 child: Container(
