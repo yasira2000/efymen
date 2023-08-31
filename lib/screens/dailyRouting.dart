@@ -177,6 +177,7 @@ class _DailyRoutingState extends State<DailyRouting>
                     child: Padding(
                       padding: const EdgeInsets.only(left: 5, right: 5),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           for (int index = 0; index < week.length; index++)
                             GestureDetector(
@@ -263,9 +264,15 @@ class _DailyRoutingState extends State<DailyRouting>
                             30,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFFC100),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
+                              color: const Color(0xFFFFC100),
+                              borderRadius: BorderRadius.circular(8),
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 2.0,
+                                    spreadRadius: -2,
+                                    offset: Offset(1, 1))
+                              ]),
                           width: MediaQuery.of(context).size.width / 12,
                           height: (MediaQuery.of(context).size.height - 260) /
                               24 *
@@ -411,6 +418,13 @@ class _DailyRoutingState extends State<DailyRouting>
                                         Icons.check,
                                         color: Colors.white,
                                         size: 17,
+                                        shadows: [
+                                          BoxShadow(
+                                              color: Colors.black45,
+                                              blurRadius: 2.0,
+                                              spreadRadius: 0.5,
+                                              offset: Offset(0, 0))
+                                        ],
                                       ),
                                     ),
                                   )
