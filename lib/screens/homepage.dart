@@ -1,5 +1,6 @@
 import 'package:efymen/screens/dailyRouting.dart';
 import 'package:efymen/screens/goalPage.dart';
+import 'package:efymen/screens/historyScreen.dart';
 import 'package:efymen/screens/todo.dart';
 import 'package:efymen/widgets/appbar.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +48,17 @@ class HomePage extends StatelessWidget {
               );
             },
             child: const Text('text 3'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HistoryPage(),
+                ),
+              );
+            },
+            child: const Text('text 4'),
           ),
         ],
       ),
