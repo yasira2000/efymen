@@ -172,59 +172,60 @@ class _DailyRoutingState extends State<DailyRouting>
                   ],
                 ),
                 SizedBox(
-                    height: 70,
-                    width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 5, right: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          for (int index = 0; index < week.length; index++)
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  current = index;
-                                });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.2),
-                                child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 300),
-                                  width: containerWidth / 10.8,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      color: current == index
-                                          ? Color(0xFFFFEAA3)
-                                          : Colors.white,
-                                      boxShadow: current == index
-                                          ? const [
-                                              BoxShadow(
-                                                  color: Colors.black26,
-                                                  blurRadius: 2.0,
-                                                  spreadRadius: 0.5,
-                                                  offset: Offset(0, 1))
-                                            ]
-                                          : const [
-                                              BoxShadow(
-                                                  color: Colors.black12,
-                                                  blurRadius: 2.0,
-                                                  spreadRadius: 0.5,
-                                                  offset: Offset(0, 1))
-                                            ],
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Center(
-                                    child: Text(
-                                      week[index],
-                                      style: GoogleFonts.roboto(
-                                          fontWeight: FontWeight.w400),
-                                    ),
+                  height: 70,
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 5, right: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        for (int index = 0; index < week.length; index++)
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                current = index;
+                              });
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.2),
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 300),
+                                width: containerWidth / 10.8,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                    color: current == index
+                                        ? Color(0xFFFFEAA3)
+                                        : Colors.white,
+                                    boxShadow: current == index
+                                        ? const [
+                                            BoxShadow(
+                                                color: Colors.black26,
+                                                blurRadius: 2.0,
+                                                spreadRadius: 0.5,
+                                                offset: Offset(0, 1))
+                                          ]
+                                        : const [
+                                            BoxShadow(
+                                                color: Colors.black12,
+                                                blurRadius: 2.0,
+                                                spreadRadius: 0.5,
+                                                offset: Offset(0, 1))
+                                          ],
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Center(
+                                  child: Text(
+                                    week[index],
+                                    style: GoogleFonts.roboto(
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ),
                               ),
-                            )
-                        ],
-                      ),
-                    )),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
