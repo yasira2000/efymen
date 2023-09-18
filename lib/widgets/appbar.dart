@@ -26,12 +26,28 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.notifications),
+          icon: const Icon(
+            Icons.notifications,
+            shadows: [
+              Shadow(
+                color: Colors.black54,
+                blurRadius: 3,
+              )
+            ],
+          ),
           color: const Color.fromARGB(255, 255, 255, 255),
         ),
         IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.settings),
+          icon: const Icon(
+            Icons.settings,
+            shadows: [
+              Shadow(
+                color: Colors.black54,
+                blurRadius: 3,
+              )
+            ],
+          ),
           color: const Color.fromARGB(255, 255, 255, 255),
         ),
       ],

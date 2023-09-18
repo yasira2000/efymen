@@ -34,6 +34,8 @@ dependencies:
   string_to_color: ^2.0.0
   intl: ^0.17.0
   shadow: ^1.5.0
+  fl_chart: ^0.63.0
+  get:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
