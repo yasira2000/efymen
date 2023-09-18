@@ -1,6 +1,8 @@
 import 'package:efymen/screens/dailyRouting.dart';
 import 'package:efymen/screens/goalPage.dart';
 import 'package:efymen/screens/historyScreen.dart';
+import 'package:efymen/screens/pomodoruTimer.dart';
+import 'package:efymen/screens/progressScreen.dart';
 import 'package:efymen/screens/todo.dart';
 import 'package:efymen/widgets/appbar.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +61,28 @@ class HomePage extends StatelessWidget {
               );
             },
             child: const Text('text 4'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProgressPage(),
+                ),
+              );
+            },
+            child: const Text('text 5'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PomodoruTimer(),
+                ),
+              );
+            },
+            child: const Text('text 6'),
           ),
         ],
       ),
