@@ -1,6 +1,4 @@
-import 'package:efymen/widgets/timer.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import './screens/homepage.dart';
 
 void main() {
@@ -12,7 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(TimerController());
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const HomePage(),

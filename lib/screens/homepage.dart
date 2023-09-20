@@ -1,7 +1,7 @@
 import 'package:efymen/screens/dailyRouting.dart';
 import 'package:efymen/screens/goalPage.dart';
 import 'package:efymen/screens/historyScreen.dart';
-import 'package:efymen/screens/pomodoruTimer.dart';
+import 'package:efymen/screens/pomodoroTimer.dart';
 import 'package:efymen/screens/progressScreen.dart';
 import 'package:efymen/screens/todo.dart';
 import 'package:efymen/widgets/appbar.dart';
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const PomodoruTimer(),
+                  builder: (context) => const PomodoroTimerPage(),
                 ),
               );
             },
